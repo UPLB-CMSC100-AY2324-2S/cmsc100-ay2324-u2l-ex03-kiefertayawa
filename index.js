@@ -29,3 +29,11 @@ function validatePassword(password1, password2){ //function for validating passw
 
     return hasNumber && hasUpperCase && hasLowerCase;
 }
+
+function reversePassword(password){ //function for reversing password
+    let reversedPassword = "";
+    for(let i = password.length-1; i >= 0; i--){ //loops through the password string in reversed order
+        reversedPassword += password[i];
+    }
+    return reversedPassword;
+}
