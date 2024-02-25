@@ -37,3 +37,25 @@ function reversePassword(password){ //function for reversing password
     }
     return reversedPassword;
 }
+
+function storePassword(name, password1, password2){ //function to store the password to an object and to print different prompts depending on the error
+    if(password1.length<8 || password2.length<8){
+        return "Insufficient Number of Strings!";
+    }
+
+    if(password1.length !== password2.length){
+        return "Wrong Password!";
+    }
+
+    if(!validatePassword(password1, password2)){
+        return "Invalid Password!";
+    } else {
+        const reversedPassword = reversePassword(password1); 
+        return { name: name, newpassword: reversedPassword }; //returns an object containing name and new passwords
+    }
+}
+
+console.log(storePassword("John", "Pass1234", "Pass1234")); // returns {name: "John", newpassword:"4321ssaP"}
+console.log(storePassword("John", "pass1234", "pass1234")); // prompts “Invalid Password!”
+console.log(storePassword("John", "pass1234", "pass1234567")); //prompts “Wrong Password!”
+console.log(storePassword("John", "pass1", "pass1")); //prompts “Insufficient Number of Strings!”
